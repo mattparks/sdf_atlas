@@ -22,7 +22,7 @@
 
 #pragma once
 
-#include <GL/glew.h>
+#include <glad/glad.h>
 
 enum ShaderType {
 	VertexShader = GL_VERTEX_SHADER, FragmentShader = GL_FRAGMENT_SHADER
@@ -41,7 +41,9 @@ namespace vatypes {
     const VertexAttribType gl_int    = { GL_INT, 4 };
     const VertexAttribType gl_uint   = { GL_UNSIGNED_INT, 4};
     const VertexAttribType gl_float  = { GL_FLOAT, 4 };
+#ifdef GL_FIXED
     const VertexAttribType gl_fixed  = { GL_FIXED, 4 };
+#endif
 }
 
 struct VertexAttrib {

@@ -24,7 +24,8 @@
 #include <fstream>
 #include <cstdio>
 #include <cstdlib>
-#include <GL/glew.h>
+#include <glad/glad.h>
+#define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 #include <GL/gl.h>
 
@@ -217,9 +218,8 @@ int main( int argc, char* argv[] ) {
     glfwSetWindowSize( window, 640, 480 );
     glfwMakeContextCurrent( window );
 
-	GLenum err = glewInit();
-    if ( err != GLEW_OK ) {
-        std::cerr << "GLEW init error: " << glewGetErrorString( err ) << std::endl;
+    if (!gladLoadGLLoader(reinterpret_cast<GLADloadproc>(glfwGetProcAddress))) {
+        std::cerr << "Glad init error" << std::endl;
         exit( 1 );
     }
 
